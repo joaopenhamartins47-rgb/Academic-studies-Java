@@ -50,5 +50,4 @@ void main() {
     System.out.printf("\nTotal de juros pago: R$ %.2f\n", totalJuros);
     System.out.println("--------------------------------------------------------------");
 
-    leitura.close();
 }

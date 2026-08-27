@@ -73,6 +73,4 @@ void main() {
     else {
         System.out.println("Data inválida!");
     }
-
-    scanner.close();
 }
