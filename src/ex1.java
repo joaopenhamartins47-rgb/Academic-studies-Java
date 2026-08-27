@@ -47,7 +47,6 @@ void main() {
     if (dataValida) {
 
         int diasDecorridos = dia - 1;
-
         for (int m = 1; m < mes; m++)
         {
             if (m == 2) {
@@ -70,7 +69,8 @@ void main() {
         System.out.println("Ano bissexto: " + (bissexto ? "Sim" : "Não"));
         System.out.println("Dias passados: " + diasDecorridos);
 
-    } else {
+    }
+    else {
         System.out.println("Data inválida!");
     }
 
