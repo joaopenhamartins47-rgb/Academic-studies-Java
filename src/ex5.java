@@ -38,9 +38,7 @@ void main() {
 
         saldoDevedor -= amortizacao;
 
-        if (i == parcelas) {
-            saldoDevedor = 0;
-        }
+
 
         totalJuros += valorJuros;
 
