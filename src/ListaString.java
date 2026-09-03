@@ -10,7 +10,8 @@ void main() {
     Scanner leitura = new Scanner(System.in);
     System.out.println("Digite uma frase");
     String frase = leitura.nextLine();
-    ListaString.verifica_vogais(frase);
+    //ListaString.verifica_vogais(frase);
+    ListaString.gerador_de_usernames();
 }
 
 public class ListaString{
@@ -41,4 +42,32 @@ public class ListaString{
             System.out.println("U");
 
     }
+    public static void gerador_de_usernames(){
+        String consoantes="bcdfghjklmnpqrstvwxyz", vogais="aeiou";
+        int i=0;
+        while(i<5){
+            int tamanho = (int)(Math.random()*3);
+            if(tamanho == 0)
+                tamanho =4;
+            else if(tamanho == 1)
+                tamanho = 6;
+            else
+                tamanho = 8;
+            String username="";
+            for(int j=0;j<tamanho;j++){
+                if(j%2==0){
+                    int pos = (int)(Math.random()*consoantes.length());
+                    username += consoantes.charAt(pos);
+                }
+                else{
+                    int pos = (int)(Math.random()*vogais.length());
+                    username += vogais.charAt(pos);
+                }
+            }
+            System.out.println("Username: " + username);
+            i++;
+        }
+
+    }
+
 }
