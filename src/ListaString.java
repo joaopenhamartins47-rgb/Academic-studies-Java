@@ -30,13 +30,25 @@ void main() {
     usuário. Caso o usuário digite um valor inválido a função deve retornar o valor zero. Faça também uma
     versão dessa função para a leitura de valores reais.
     */
+    //ListaString.ler_painel("Bem vindo", "Digite um valor inteiro");
+    /*
+    4. Faça um programa que, a partir de um texto digitado pelo usuário, conte o número de palavras
+    (palavra é definida por qualquer sequência de caracteres delimitada por espaços em branco, virgula,
+    ponto ou ponto e vírgula) e exiba o resultado. Dica: use o metodo split com expressões regulares para
+    separar e posteriormente contar as palavras.
+
+    */
+    ListaString.cont_palavras_com_regex();
 }
 
-public class ListaString{
-    public static void verifica_vogais(String frase){
+public class ListaString
+{
+    public static void verifica_vogais(String frase)
+    {
         boolean ta=false,te=false,ti=false,to=false,tu=false;
         frase=frase.toLowerCase();
-        for(int i = 0; i<frase.length();i++){
+        for(int i = 0; i<frase.length();i++)
+        {
             if(frase.charAt(i) == 'a')
                 ta=true;
             else if(frase.charAt(i) == 'e')
@@ -60,7 +72,8 @@ public class ListaString{
             System.out.println("U");
 
     }
-    public static void gerador_de_usernames(){
+    public static void gerador_de_usernames()
+    {
         String consoantes="bcdfghjklmnpqrstvwxyz", vogais="aeiou";
         int i=0;
         while(i<5){
@@ -87,15 +100,27 @@ public class ListaString{
         }
 
     }
-    public static int ler_painel(String titulo, String mensagem){
-            try {
+    public static int ler_painel(String titulo, String mensagem)
+    {
+            try
+            {
                 int valor = Integer.parseInt(JOptionPane.showInputDialog(null, mensagem, titulo, JOptionPane.QUESTION_MESSAGE));
                 return valor;
             }
-            catch(Exception e) {
+            catch(Exception e)
+            {
                 return 0;
             }
-
-        }
     }
+
+    public static void cont_palavras_com_regex()
+    {
+        System.out.println("Digite uma frase para contar as palavras!");
+        Scanner leitura = new Scanner(System.in);
+        String[] frase = leitura.nextLine().split("[\\s,.;]+");
+        System.out.printf("Quantidade de palavras: %d\n", frase.length);
+    }
+}
+
+
 
