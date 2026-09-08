@@ -57,11 +57,17 @@ void main() {
     colunas, seja capaz de retornar a mesma frase acomodada e justificada em uma área limitada ao
     número de colunas informada. As palavras não poderão ser divididas.
     */
+
     System.out.println("Digite uma frase pra justificar e a quantidade de colunas");
     leitura.nextLine(); // consome o Enter
-    String just = leitura.nextLine();
+    frase = leitura.nextLine();
     int colunas = leitura.nextInt();
-    System.out.printf("%s\n", ListaString.justificar(just, colunas));
+    System.out.printf("%s\n", ListaString.justificar(frase, colunas));
+
+    System.out.println("Digite uma placa de carro, ou CPF, ou Nome, ou varivel, ou email");
+    leitura.nextLine();
+    frase = leitura.nextLine();
+    System.out.printf("%s\n", ListaString.identificador(frase));
 }
 
 public class ListaString
@@ -177,6 +183,22 @@ public class ListaString
         justificado += palavra;
         return justificado;
     }
+    public static String identificador(String frase)
+    {
+        if(frase.matches("[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}")){
+            return "[CPF]";
+        }
+        if(frase.matches("[A-Za-z]+\\s+[A-Za-z]+"))
+            return "[NOME]";
+        if(frase.matches("\\w+@\\w+(\\.\\w{2,3})+"))
+            return "[EMAIL]";
+        if(frase.matches("[A-Za-z][A-Za-z0-9_]*"))
+            return "[VARIAVEL]";
+        if(frase.matches("[A-Z]{3}[0-9][A-Z][0-9]{2}|[A-Z]{3}-[0-9]{4}"))
+            return "[PLACA DE CARRO]";
+        return "[DESCONHECIDO]";
+    }
+
 
 
 }
