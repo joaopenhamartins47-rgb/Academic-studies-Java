@@ -64,6 +64,18 @@ void main() {
     int colunas = leitura.nextInt();
     System.out.printf("%s\n", ListaString.justificar(frase, colunas));
 
+    /*
+    Utilizando REGEX desenvolva um metodo estático com a finalidade de testar se uma string recebida como
+    parâmetro pode ser considerada uma das cinco possibilidades: nome completo de uma pessoa, um email,
+    uma variável em Java, uma placa de carro, CPF de uma pessoa ou um valor desconhecido.
+    a. [NOME], caso a string seja parecia com o nome completo de uma pessoa, pelo menos nome e
+    sobrenome
+    b. [EMAIL], caso se pareça com um email
+    c. [VARIAVEL], nome válido para ser dado ao uma variável em Java
+    d. [PLACA DE CARRO], caso se assemelhe a uma placa de veículo nacional (formato: AAA-9?99)
+    e. [CPF], caso tenha o formato: 999.999.999-99
+    f. [DESCONHECIDO], caso não se assemelha a nenhum dos casos acima
+    */
     System.out.println("Digite uma placa de carro, ou CPF, ou Nome, ou varivel, ou email");
     leitura.nextLine();
     frase = leitura.nextLine();
