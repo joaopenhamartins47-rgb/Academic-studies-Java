@@ -11,7 +11,7 @@ void main() {
     Scanner leitura = new Scanner(System.in);
     System.out.println("Digite uma frase");
     String frase = leitura.nextLine();
-    //ListaString.verifica_vogais(frase);
+    ListaString.verifica_vogais(frase);
 
     /*
     2. Desenvolva um programa gerador de usernames. O programa deve gerar e apresentar 5 usernames
@@ -39,6 +39,18 @@ void main() {
 
     */
     ListaString.cont_palavras_com_regex();
+
+    /*
+    5. Embaralhar as palavras é um tipo de quebra-cabeças que é popular com crianças. As letras em cada
+    palavra são rearranjadas em uma ordem qualquer e a pessoa que está usando o quebra-cabeças tem
+    que descobrir qual era a palavra original. Palavras com três e quatro letras são fáceis, mas quanto mais
+    letras são adicionadas, o número de combinações possíveis cresce rapidamente, deixando o quebracabeças mais desafiador. Crie um método estático em Java que ao receber uma palavra qualquer
+    como parâmetro a retorne de forma embaralhada.
+    Ex: embaralhar(“Unoeste”); deve retornar algo do tipo: enostUe
+    */
+    System.out.println("Digite uma palavra pra embaralhar!");
+    frase = leitura.next();
+    System.out.printf("Palavra embaralhada: %s\n", ListaString.embaralhar_palavra(frase));
 }
 
 public class ListaString
@@ -120,6 +132,21 @@ public class ListaString
         String[] frase = leitura.nextLine().split("[\\s,.;]+");
         System.out.printf("Quantidade de palavras: %d\n", frase.length);
     }
+    public static String embaralhar_palavra(String frase)
+    {
+        String copia = frase, embaralhar="";
+        int tam = frase.length();
+        while(tam > 0)
+        {
+            int pos = (int)(Math.random()*copia.length());
+            embaralhar += copia.charAt(pos);
+            copia = copia.substring(0, pos) + copia.substring(pos+1);
+            tam--;
+        }
+        return embaralhar;
+
+    }
+
 }
 
 
