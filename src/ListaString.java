@@ -51,6 +51,17 @@ void main() {
     System.out.println("Digite uma palavra pra embaralhar!");
     frase = leitura.next();
     System.out.printf("Palavra embaralhada: %s\n", ListaString.embaralhar_palavra(frase));
+
+    /*
+    6. Desenvolva um método estático que ao receber uma frase como parâmetro e quantidade máxima de
+    colunas, seja capaz de retornar a mesma frase acomodada e justificada em uma área limitada ao
+    número de colunas informada. As palavras não poderão ser divididas.
+    */
+    System.out.println("Digite uma frase pra justificar e a quantidade de colunas");
+    leitura.nextLine(); // consome o Enter
+    String just = leitura.nextLine();
+    int colunas = leitura.nextInt();
+    System.out.printf("%s\n", ListaString.justificar(just, colunas));
 }
 
 public class ListaString
@@ -144,8 +155,29 @@ public class ListaString
             tam--;
         }
         return embaralhar;
-
     }
+    public static String justificar(String frase, int colunas)
+    {
+        String justificado="", palavra="";
+        int col = 0;
+        for(int i=0;i<frase.length();i++)
+        {
+            col++;
+            palavra += frase.charAt(i);
+            if(frase.charAt(i) == ' ')
+            {
+                if(col > colunas){
+                    justificado += "\n";
+                    col=palavra.length();
+                }
+                justificado += palavra;
+                palavra = "";
+            }
+        }
+        justificado += palavra;
+        return justificado;
+    }
+
 
 }
 
