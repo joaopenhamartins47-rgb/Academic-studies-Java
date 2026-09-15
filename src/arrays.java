@@ -32,7 +32,31 @@ void main() {
             {7, 8, 9}
     };
     int soma = ListaArray.soma_diagonal(matriz);
-    System.out.printf("Soma: %d", soma);
+    System.out.printf("Soma: %d\n", soma);
+    /*
+    3) Desenvolva um método estático em Java chamado `ordenarEFiltrar`, que recebe um vetor de números
+        inteiros e um número inteiro `limite`. O método deve realizar as seguintes operações:
+        a. Filtrar os elementos do vetor que são maiores do que o `limite` e armazená-los em um novo vetor.
+        b. Ordenar o novo vetor em ordem crescente.
+        c. Retornar o vetor ordenado.
+        Se não houver elementos que atendam ao critério de filtragem (ou seja, se todos os elementos do
+        vetor original forem menores ou iguais ao `limite`), o método deve retornar um vetor vazio.
+        Por exemplo, se o vetor de entrada for `{7, 10, 3, 15, 8}` e o `limite` for `6`, o método deve retornar o vetor
+        `{7, 8, 10, 15}`.
+        Crie também um método `main` para testar o método `ordenarEFiltrar` com diferentes cenários, incluindo
+        vetores com elementos que não atendem ao critério de filtragem.
+    */
+    int[] vet = {7, 10, 3, 15, 8};
+
+    int[] resultado = ListaArray.ordenarEFiltrar(vet, 6);
+
+    ListaArray.exibir_vetor(resultado);
+
+    int[] vet2 = {1, 2, 3, 4, 5};
+
+    int[] resultado2 = ListaArray.ordenarEFiltrar(vet2, 10);
+
+    ListaArray.exibir_vetor(resultado2);
 }
 
 public class ListaArray
@@ -53,6 +77,7 @@ public class ListaArray
     {
         for(int i =0; i<vet.length;i++)
             System.out.printf("[%d]", vet[i]);
+        System.out.println("\n");
     }
     public static void num_pares(int n)
     {
@@ -85,6 +110,25 @@ public class ListaArray
             diagonal_lin++;
         }
         return soma;
+    }
+    public static int[] ordenarEFiltrar(int[] vet, int limite)
+    {
+        int j=0, n=0;
+        for(int i =0; i<vet.length; i++) //Verifica quantos limites tem
+        {
+            if(vet[i] > limite)
+                n++;
+        }
+        int[] vetor_limite = new int[n];
+
+        for(int i =0; i<vet.length;i++)
+        {
+            if(vet[i] > limite)
+                vetor_limite[j++] = vet[i];
+
+        }
+        Arrays.sort(vetor_limite);
+        return vetor_limite;
     }
 
 
