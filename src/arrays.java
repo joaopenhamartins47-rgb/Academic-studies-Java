@@ -57,6 +57,50 @@ void main() {
     int[] resultado2 = ListaArray.ordenarEFiltrar(vet2, 10);
 
     ListaArray.exibir_vetor(resultado2);
+
+    /*
+    4) Megasena
+        A Mega-Sena é a maior loteria do Brasil. Os sorteios acontecem duas vezes por semana, às quartas-feiras
+        e aos sábados. O princípio do jogo é simples: são sorteados seis números diferentes, compreendidos entre 01 e
+        60 (inclusive). Os sorteios são realizados em globos duplos (duas gaiolas esféricas girando). Os números são
+        sorteados em dígitos separados, que formam um número decimal de dois dígitos, de 01 a 60. A primeira gaiola
+        tem esferas variando de 0 a 5 para o primeiro dígito, e a outra tem esferas variando de 0 a 9 para o segundo. O
+        número 00 corresponde ao 60. Quando seis pares de números originais são extraídos o sorteio está concluído.
+        Os apostadores podem apostar de seis a quinze números do total de 60.
+        Desenvolva um algoritmo em Java que pergunte ao usuário quantos jogos ele irá fazer e qual a quantidade
+        de números que ele irá apostar para estes jogos (todos deverão obedecer a mesma quantidade de números).
+        Após, gere aleatoriamente os números para cada aposta (não é permitido números repetidos em uma mesma
+        aposta), faça o sorteio da Mega-Sena (obedecendo a regra oficial) e por final analise todas as apostas, emitindo
+        o resultado da apuração de cada uma delas
+    */
+    System.out.printf("Quantos jogos deseja fazer? ");
+    int jogos = leitura.nextInt();
+
+    System.out.printf("Quantos numeros tera cada aposta? ");
+    int quantidade = leitura.nextInt();
+    while(quantidade < 6 || quantidade > 15)
+    {
+        System.out.printf("Quantidade invalida! Digite um valor entre 6 e 15: ");
+        quantidade = leitura.nextInt();
+    }
+    int[][] apostas = new int[jogos][quantidade];
+
+    for(int i = 0; i < jogos; i++)
+    {
+        apostas[i] = ListaArray.geraAposta(quantidade); //Gera as apostas pra cada linha
+    }
+
+    int[] megasena = ListaArray.geraMegaSena();
+    ListaArray.MostraMegaSena(megasena);
+
+    for(int i = 0; i < jogos; i++)
+    {
+        ListaArray.MostraAposta(apostas[i]);
+
+        int acertos = ListaArray.verificaAposta(apostas[i], megasena);
+
+        System.out.printf("Acertos: %d\n", acertos);
+    }
 }
 
 public class ListaArray
@@ -129,6 +173,94 @@ public class ListaArray
         }
         Arrays.sort(vetor_limite);
         return vetor_limite;
+    }
+
+    public static int[] geraAposta(int num)
+    {
+        int[] aposta = new int[num];
+        int i = 0;
+
+        while(i < num)
+        {
+            int sorteado = (int)(Math.random() * 60) + 1;
+            int repetido = 0;
+
+            for(int j = 0; j < i; j++)
+            {
+                if(aposta[j] == sorteado)
+                    repetido = 1;
+            }
+
+            if(repetido == 0)
+            {
+                aposta[i] = sorteado;
+                i++;
+            }
+        }
+
+        return aposta;
+    }
+
+    public static int[] geraMegaSena()
+    {
+        int[] megasena = new int[6];
+        int i = 0;
+
+        while(i < 6)
+        {
+            int sorteado = (int)(Math.random() * 60) + 1;
+            int repetido = 0;
+
+            for(int j = 0; j < i; j++)
+            {
+                if(megasena[j] == sorteado)
+                    repetido = 1;
+            }
+
+            if(repetido == 0)
+            {
+                megasena[i] = sorteado;
+                i++;
+            }
+        }
+
+        return megasena;
+    }
+
+    public static int verificaAposta(int[] aposta, int[] megasena)
+    {
+        int acertos = 0;
+
+        for(int i = 0; i < aposta.length; i++)
+        {
+            for(int j = 0; j < megasena.length; j++)
+            {
+                if(aposta[i] == megasena[j])
+                    acertos++;
+            }
+        }
+
+        return acertos;
+    }
+
+    public static void MostraMegaSena(int[] megasena)
+    {
+        System.out.printf("Mega-Sena: ");
+
+        for(int i = 0; i < megasena.length; i++)
+            System.out.printf("[%d] ", megasena[i]);
+
+        System.out.println();
+    }
+
+    public static void MostraAposta(int[] aposta)
+    {
+        System.out.printf("Aposta: ");
+
+        for(int i = 0; i < aposta.length; i++)
+            System.out.printf("[%d] ", aposta[i]);
+
+        System.out.println();
     }
 
 
