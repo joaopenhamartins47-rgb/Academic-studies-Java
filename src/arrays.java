@@ -16,6 +16,23 @@ void main() {
     int vetor[] = new int[20];
     vetor = ListaArray.int_to_vet(num);
     ListaArray.exibir_vetor(vetor);
+    /* 2) Matriz de números pares
+    Uma matriz de números pares é uma matriz quadrada que contém apenas números
+    pares, começando de 2 e seguindo sequencialmente. Desenvolva um programa em Java
+    que implemente os seguintes métodos estáticos:
+    a) Metodo geraMatrizPares(): que, ao receber uma ordem (n), gere uma matriz n x n e a preencha com
+    números pares, começando de 2. Cada elemento da matriz deve ser um número par sequencial, na sequ
+     */
+    System.out.println("Digite o tamanho da matriz!");
+    int n = leitura.nextInt();
+    ListaArray.num_pares(n);
+    int [][] matriz = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+    };
+    int soma = ListaArray.soma_diagonal(matriz);
+    System.out.printf("Soma: %d", soma);
 }
 
 public class ListaArray
@@ -37,6 +54,41 @@ public class ListaArray
         for(int i =0; i<vet.length;i++)
             System.out.printf("[%d]", vet[i]);
     }
+    public static void num_pares(int n)
+    {
+        int matriz[][] = new int[n][n];
+        int num_par = 0;
+        for(int lin=0; lin<n;lin++)
+            for(int col = 0; col<n; col++)
+                matriz[lin][col] = num_par+=2;
+        ListaArray.exibir_matriz(matriz);
+    }
+    public static void exibir_matriz(int[][] matriz)
+    {
+        for(int lin=0; lin<matriz.length;lin++) {
+            for (int col = 0; col < matriz.length; col++)
+                System.out.printf("[%d] ", matriz[lin][col]);
+            System.out.println("\n");
+        }
+    }
+    public static int soma_diagonal(int[][] matriz)
+    {
+        int diagonal_lin = 0, diagonal_col=0, soma=0;
+        for(int lin=0;lin<matriz.length; lin++)
+        {
+            for(int col=0;col<matriz.length;col++)
+            {
+                if(diagonal_col == col && diagonal_lin == lin)
+                    soma+= matriz[lin][col];
+            }
+            diagonal_col++;
+            diagonal_lin++;
+        }
+        return soma;
+    }
+
+
+
 
 
 
