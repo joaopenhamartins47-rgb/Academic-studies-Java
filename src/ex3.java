@@ -28,5 +28,4 @@ void main() {
     System.out.println("Inverso: " + inverso);
     System.out.println("Numero verificador: " + verificador);
 
-    leitura.close();
 }
