@@ -96,6 +96,38 @@ void maior_soma(int[][] mat)
     System.out.println("A linha com a maior soma eh a linha: " + pos + "\nCom a soma de: " + maior);
 }
 
+void espelhar_mat(int[][] mat)
+{
+    /*29. Matriz espelhada
+
+    Receba:
+
+    1 2 3
+    4 5 6
+    7 8 9
+
+    e produza:
+
+    3 2 1
+    6 5 4
+    9 8 7
+    */
+    int[][] mat_esp = new int[mat.length][mat[0].length];
+    for(int i = 0; i<mat.length; i++)
+    {
+        int col = mat[i].length-1;
+        for(int j = 0; j<mat[i].length; j++)
+        {
+            mat_esp[i][col--] = mat[i][j];
+        }
+    }
+    for (int i = 0; i < mat_esp.length; i++) {
+        for (int j = 0; j < mat_esp[i].length; j++) {
+            System.out.print(mat_esp[i][j] + " ");
+        }
+        System.out.println();
+    }
+}
 
 void main()
 {
@@ -107,5 +139,6 @@ void main()
             {12, 5, 2, 1, 1}
     };
     maior_soma(mat1);
+    espelhar_mat(mat1);
 
 }
