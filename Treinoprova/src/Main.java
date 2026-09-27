@@ -35,8 +35,50 @@ void finalzero()
 
 }
 
+void intersecao()
+{
+    /*26. Valores comuns entre dois vetores
+
+    Receba:
+
+    A = {2, 5, 8, 10, 15}
+    B = {1, 5, 7, 10, 20}
+
+    Retorne:
+
+    {5, 10}
+
+    Não coloque repetidos no resultado.
+    */
+    int[] vet1 = {2, 5, 8, 10, 15};
+    int[] vet2 = {1, 5, 7, 10, 20};
+    int[] resultado = new int[vet1.length];
+    int pos=0;
+    for(int i = 0; i<vet1.length; i++)
+    {
+        boolean encontrou=false;
+        boolean existe=false;
+        for(int j = 0; j<vet2.length && !encontrou; j++)
+        {
+            if(vet1[i] == vet2[j])
+            {
+                encontrou = true;
+                for(int k = 0; k<pos && !existe; k++)
+                {
+                    if(resultado[k] == vet1[i])
+                        existe = true;
+                }
+                if(!existe)
+                    resultado[pos++] = vet1[i];
+            }
+        }
+    }
+    System.out.println(Arrays.toString(resultado));
+}
+
 
 void main()
 {
     finalzero();
+    intersecao();
 }
