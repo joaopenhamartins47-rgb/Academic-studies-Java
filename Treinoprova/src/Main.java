@@ -77,8 +77,35 @@ void intersecao()
 }
 
 
+void maior_soma(int[][] mat)
+{
+    int soma, maior=0, pos=0;
+    for(int i = 0; i<mat.length; i++)
+    {
+        soma = 0;
+        for(int j = 0; j<mat[i].length; j++)
+        {
+            soma += mat[i][j];
+        }
+        if(soma > maior)
+        {
+            maior = soma;
+            pos = i;
+        }
+    }
+    System.out.println("A linha com a maior soma eh a linha: " + pos + "\nCom a soma de: " + maior);
+}
+
+
 void main()
 {
     finalzero();
     intersecao();
+    int[][] mat1 = {
+            {1, 3, 5, 7, 13},
+            {2, 4, 6, 8, 10},
+            {12, 5, 2, 1, 1}
+    };
+    maior_soma(mat1);
+
 }
