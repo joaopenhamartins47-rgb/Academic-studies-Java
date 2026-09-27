@@ -129,6 +129,40 @@ void espelhar_mat(int[][] mat)
     }
 }
 
+public class Simulado
+{
+    public static int[] limpar_vetor(int[] vet1)
+    {
+        //Crie um metodo que receba um vetor e retorne outro contendo somente os números pares, sem repetição e em ordem crescente.
+        int[] novo_vet = new int[vet1.length];
+        int pos=0;
+        for(int i = 0; i<vet1.length; i++)
+        {
+            boolean existe=false;
+            if(vet1[i] % 2 == 0)
+            {
+                for(int j = 0; j<pos && !existe; j++)
+                {
+                    if(novo_vet[j] == vet1[i])
+                        existe = true;
+                }
+                if(!existe)
+                {
+                    novo_vet[pos++] = vet1[i];
+                }
+            }
+        }
+        int[] resultado = Arrays.copyOf(novo_vet, pos); //Corta o vetor ignorando os zeros
+
+        Arrays.sort(resultado);
+
+        System.out.println(Arrays.toString(resultado));
+        return resultado;
+    }
+}
+
+
+
 void main()
 {
     finalzero();
@@ -140,5 +174,7 @@ void main()
     };
     maior_soma(mat1);
     espelhar_mat(mat1);
+    int[] vetor1 = {1, 2, 2, 4, 5, 7, 3, 11, 3, 2, 5, 4};
+    Simulado.limpar_vetor(vetor1);
 
 }
