@@ -159,6 +159,53 @@ public class Simulado
         System.out.println(Arrays.toString(resultado));
         return resultado;
     }
+    //Receba uma matriz quadrada e informe:
+    //Soma diagonal principal
+    //Soma diagonal secundária
+    //Maior elemento
+    //Menor elemento
+    public static void calcula_mat(int[][] mat1)
+    {
+        int soma_dp = 0;
+        int soma_ds = 0, maior = 0, menor=mat1[0][0];
+        int col_d = mat1[0].length-1;
+        for(int i = 0; i<mat1.length; i++)
+        {
+            for(int j = 0; j<mat1[i].length; j++)
+            {
+                if(i == j)
+                {
+                    soma_dp+= mat1[i][j];
+                }
+                if(col_d>= 0 && j == col_d)
+                {
+                    soma_ds += mat1[i][j];
+                    col_d--;
+                }
+                if(mat1[i][j] > maior)
+                {
+                    maior = mat1[i][j];
+                }
+                else if(mat1[i][j] < menor){
+                    menor = mat1[i][j];
+                }
+            }
+        }
+        System.out.println("Soma diagonal principal: " + soma_dp);
+        System.out.println("Soma diagonal secundária: " + soma_ds);
+        System.out.println("Maior elemento: " + maior);
+        System.out.println("Menor elemento: " + menor);
+    }
+    /*
+    Receba uma frase e informe:
+
+    Quantidade de palavras
+    Quantidade de caracteres
+    Maior palavra
+    Menor palavra
+    Quantidade de vogais
+    */
+    public static void
 }
 
 
@@ -168,13 +215,15 @@ void main()
     finalzero();
     intersecao();
     int[][] mat1 = {
-            {1, 3, 5, 7, 13},
-            {2, 4, 6, 8, 10},
-            {12, 5, 2, 1, 1}
+            {8, 2, 5, 1},
+            {4, 7, 3, 9},
+            {6, 0, 10, 2},
+            {11, 5, 1, 12}
     };
     maior_soma(mat1);
     espelhar_mat(mat1);
     int[] vetor1 = {1, 2, 2, 4, 5, 7, 3, 11, 3, 2, 5, 4};
     Simulado.limpar_vetor(vetor1);
+    Simulado.calcula_mat(mat1);
 
 }
