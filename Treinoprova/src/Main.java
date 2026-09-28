@@ -275,6 +275,32 @@ public class Simulado
         System.out.println("Maior palavra: " + maior);
         System.out.println("Menor palavra: " + menor);
     }
+    /*
+    Receba uma palavra e gere uma nova palavra formada pelas letras em posições pares primeiro e depois pelas letras em posições ímpares.
+    */
+    public static void gerar_palavra()
+    {
+        System.out.println("Digite a frase");
+        Scanner leitura = new Scanner(System.in);
+        String palavra = leitura.next();
+        String resultado = "";
+        for(int i = 0; i<palavra.length(); i++)
+        {
+            if(i % 2 == 0)
+            {
+                resultado += palavra.charAt(i);
+            }
+        }
+        for(int i = 1; i<palavra.length(); i++)
+        {
+            if(i % 2 != 0)
+            {
+                resultado += palavra.charAt(i);
+            }
+        }
+        System.out.println(resultado);
+
+    }
 
 }
 
@@ -296,5 +322,6 @@ void main()
     Simulado.limpar_vetor(vetor1);
     Simulado.calcula_mat(mat1);
     Simulado.verifica_s();
+    Simulado.gerar_palavra();
 
 }
