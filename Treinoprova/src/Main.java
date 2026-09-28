@@ -301,6 +301,29 @@ public class Simulado
         System.out.println(resultado);
 
     }
+    public static int[] pares(int[] vet1)
+    {
+        int cont = 0;
+
+        for (int i = 0; i < vet1.length; i++)
+        {
+            if (vet1[i] % 2 == 0)
+                cont++;
+        }
+
+        int[] num_pares = new int[cont];
+
+        int j = 0;
+
+        for (int i = 0; i < vet1.length; i++)
+        {
+            if (vet1[i] % 2 == 0)
+                num_pares[j++] = vet1[i];
+        }
+
+        return num_pares;
+    }
+
 
 
 }
