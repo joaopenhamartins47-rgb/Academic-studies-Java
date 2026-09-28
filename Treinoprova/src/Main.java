@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 void finalzero()
 {
@@ -205,6 +206,76 @@ public class Simulado
     Menor palavra
     Quantidade de vogais
     */
+    public static void verifica_s()
+    {
+        System.out.println("Digite a frase");
+        Scanner leitura = new Scanner(System.in);
+        String frase = leitura.nextLine();
+        int palavras=0, chare = 0, vogais=0;
+        String maior="", menor="";
+        frase = frase.toLowerCase();
+        String vogal="aeiou";
+        String palavra="";
+        for(int i = 0; i<frase.length(); i++)
+        {
+            if(frase.charAt(i) >= 'a' && frase.charAt(i) <= 'z')
+            {
+                chare++;
+                if (vogal.indexOf(frase.charAt(i)) != -1)
+                    vogais++;
+
+                palavra += frase.charAt(i);
+            }
+            if(frase.charAt(i) == ' ')
+            {
+                if (palavra.length() > 0)
+                {
+                    palavras++;
+                    boolean entrou = false;
+
+                    if (palavra.length() > maior.length())
+                    {
+                        if (maior.isEmpty())
+                        {
+                            menor = palavra;
+                            entrou = true;
+                        }
+                        maior = palavra;
+                    }
+                    if (palavra.length() < menor.length() && !entrou)
+                    {
+                        menor = palavra;
+                    }
+                }
+                palavra = "";
+            }
+        }
+        if (palavra.length() > 0)
+        {
+            palavras++;
+            boolean entrou = false;
+
+            if (palavra.length() > maior.length()) {
+                if (maior.isEmpty())
+                {
+                    menor = palavra;
+                    entrou = true;
+                }
+                maior = palavra;
+            }
+            if (palavra.length() < menor.length() && !entrou) {
+                menor = palavra;
+            }
+        }
+
+
+        System.out.println("Quantidade de palavras: " + palavras);
+        System.out.println("Quantidade de caracteres: " + chare);
+        System.out.println("Quantidade de vogais: " + vogais);
+        System.out.println("Maior palavra: " + maior);
+        System.out.println("Menor palavra: " + menor);
+    }
+
 }
 
 
@@ -224,5 +295,6 @@ void main()
     int[] vetor1 = {1, 2, 2, 4, 5, 7, 3, 11, 3, 2, 5, 4};
     Simulado.limpar_vetor(vetor1);
     Simulado.calcula_mat(mat1);
+    Simulado.verifica_s();
 
 }
