@@ -205,7 +205,6 @@ public class Simulado
     Menor palavra
     Quantidade de vogais
     */
-    public static void
 }
 
 
