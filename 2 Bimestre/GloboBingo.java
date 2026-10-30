@@ -40,25 +40,35 @@ class GloboBingo
 
     }
     //Como eu nao posso pegar os dados da classe, pois sao privados, eu tenho que fazer funcoes que retornam ela
-    public int obterQuantNumerosSorteados()
-    {
-
+    public int obterQuantNumerosSorteados(){
+        return maiorNumero-qtdeAtual;
     }
-    public int obterQuantNumerosRestantes()
-    {
-
+    public int obterQuantNumerosRestantes(){
+        return qtdeAtual;
     }
-    public boolean devolverNumero(int numero)
-    {
-
+    public boolean devolverNumero(int numero){
+        boolean devolvido=false;
+        if(numero>=1 && numero<=maiorNumero)
+            if(sorteado(numero)) {
+                numeros[qtdeAtual++] = numero;
+                devolvido=true;
+            }
+        return devolvido;
     }
-    public boolean sorteado(int numero)
-    {
-
+    //método privado que somente outros métodos executam
+    private boolean sorteado(int numero){
+        boolean flag=true;
+        for(int i=0; i<qtdeAtual; i++)
+            if(numeros[i]==numero)
+                flag=false;
+        return flag;
     }
-    public String obterRelacaoNumeroSorteado()
-    {
-
+    public String obterRelacaoNumerosSorteados(){
+        String naoSorteados="";
+        for(int i=0; i<maiorNumero; i++)
+            if(!sorteado(i+1))
+                naoSorteados+=(i+1)+" ";
+        return naoSorteados;
     }
 
 }
